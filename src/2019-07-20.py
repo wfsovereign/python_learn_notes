@@ -32,7 +32,7 @@ def getpi1(digit=6000):
   time2=time.time()
   print('总共耗时：' + str(time2 - time1) + 's')
 
-print(getpi1())
+print(getpi1(10))
 
 # print(sys.getrecursionlimit())
 # sys.setrecursionlimit(0x100000)

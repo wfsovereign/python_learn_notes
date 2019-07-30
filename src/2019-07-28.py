@@ -33,7 +33,7 @@ def calculateCircumference(precision = 10):
   resultPrecision = 10 ** extraPrecision
 
   x1 = resultPrecision * 4 // 5
-  x2 = resultPrecision * -(1 // 239)
+  x2 = resultPrecision // -239
 
   sum = x1 + x2
 
@@ -49,12 +49,12 @@ def calculateCircumference(precision = 10):
   pi //= 10 ** 10
   pi = str(pi)
 
-  print('result: ', len(pi))
+  print('result: ', pi)
   timeEnd = time.time()
   print('total time: ', str(timeEnd - timeStart), 's')
 
 
-calculateCircumference(10 ** 5)
+calculateCircumference(10 ** 2)
 
 '''
 result:  100001
