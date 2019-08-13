@@ -103,10 +103,13 @@ def get_number_rows(ai_settings, ship_height, alien_height):
   return number_rows
 
 
-def update_aliens(ai_settings, aliens):
+def update_aliens(ai_settings, ship, aliens):
 
   check_fleet_edges(ai_settings, aliens)
   aliens.update()
+
+  if pygame.sprite.spritecollideany(ship, aliens):
+    print("Ship hit!!!")
 
 
 def check_fleet_edges(ai_settings, aliens):
