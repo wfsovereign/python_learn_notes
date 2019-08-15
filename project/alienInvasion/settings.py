@@ -9,6 +9,7 @@ class Settings():
     self.bg_color = (230, 230, 200)
     
     self.ship_speed_factor = 6
+    self.ship_limit = 2
 
     self.bullet_speed_factor = 5
     self.bullet_width = 1
@@ -17,9 +18,8 @@ class Settings():
     self.bullet_allowed = 30
     self.bullet_awesome = True
 
-    self.alien_speed_factor = 2
+    self.alien_speed_factor = 6
     self.fleet_drop_speed = 10
 
     self.fleet_direction = 1
 
-  
