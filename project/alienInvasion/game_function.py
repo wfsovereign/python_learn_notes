@@ -55,12 +55,14 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
   elif event.key == pygame.K_SPACE:
     fire_bullet(ai_settings, screen, ship, bullets)
 
-def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
+def update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_button):
   screen.fill(ai_settings.bg_color)
   for bullet in bullets.sprites():
     bullet.draw_bullet()
   ship.blitme()
   aliens.draw(screen)
+
+  sb.show_score()
 
   if not stats.game_active:
     play_button.draw_button()
@@ -69,18 +71,23 @@ def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button
 
   
 
-def update_bullets(ai_settings, screen, ship, aliens, bullets):
+def update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets):
 
   bullets.update()
 
   for bullet in bullets.copy():
     if bullet.rect.bottom <= 0:
       bullets.remove(bullet)
-  check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets)
+  check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, bullets)
 
 
-def check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets):
+def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, bullets):
   collisions = pygame.sprite.groupcollide(bullets, aliens, not ai_settings.bullet_awesome, True)
+
+  if collisions:
+    for aliens in collisions.values():
+      stats.score += ai_settings.alien_points * len(aliens)
+      sb.prep_score()
 
   if len(aliens) == 0:
 
