@@ -48,6 +48,10 @@ def check_keyup_events(event, ship):
     ship.moving_left = False
   elif event.key == pygame.K_q:
     sys.exit()
+  elif event.key == pygame.K_UP:
+    ship.moving_up = False
+  elif event.key == pygame.K_DOWN:
+    ship.moving_down = False
 
 def check_keydown_events(event, ai_settings, screen, ship, bullets):
   if event.key == pygame.K_RIGHT:
@@ -56,6 +60,10 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
     ship.moving_left = True
   elif event.key == pygame.K_SPACE:
     fire_bullet(ai_settings, screen, ship, bullets)
+  elif event.key == pygame.K_UP:
+    ship.moving_up = True
+  elif event.key == pygame.K_DOWN:
+    ship.moving_down = True
 
 def update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_button):
   screen.fill(ai_settings.bg_color)
