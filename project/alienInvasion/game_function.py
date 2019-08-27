@@ -1,6 +1,6 @@
 
 import sys
-import pygame 
+import pygame
 
 from time import sleep
 from bullet import Bullet
@@ -92,6 +92,7 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, 
   if collisions:
     for aliens in collisions.values():
       stats.score += ai_settings.alien_points * len(aliens)
+      stats.update_highest_score()
       sb.prep_score()
     check_high_score(stats, sb)
 
@@ -196,5 +197,5 @@ def check_alien_bottom(ai_settings, stats, sb, screen, ship, aliens, bullets):
 
 def check_high_score(stats, sb):
   if stats.score > stats.high_score:
-    stats.high_score = stats.score
+    stats.set_high_score(stats.score)
     sb.prep_high_score()
