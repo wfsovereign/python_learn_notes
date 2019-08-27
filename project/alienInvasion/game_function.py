@@ -31,10 +31,7 @@ def check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens,
     stats.reset_stats()
     stats.game_active = True
 
-    sb.prep_score()
-    sb.prep_high_score()
-    sb.prep_level()
-    sb.prep_ships()
+    sb.prep_images()
 
     aliens.empty()
     bullets.empty()
